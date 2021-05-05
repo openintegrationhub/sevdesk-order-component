@@ -1,0 +1,37 @@
+{
+    "type": "object",
+    "properties": {
+        "status": {
+            "required": false,
+            "type": "integer",
+            "enum": [
+                "100",
+                "200",
+                "300",
+                "500",
+                "750",
+                "1000"
+            ]
+        },
+        "orderNumber": {
+            "required": false,
+            "type": "string"
+        },
+        "startDate": {
+            "required": false,
+            "type": "integer"
+        },
+        "endDate": {
+            "required": false,
+            "type": "integer"
+        },
+        "contact_id_": {
+            "required": false,
+            "type": "integer"
+        },
+        "contact_objectName_": {
+            "required": false,
+            "type": "string"
+        }
+    }
+}

@@ -1,0 +1,13 @@
+{
+    "type": "object",
+    "properties": {
+        "order_id_": {
+            "required": false,
+            "type": "integer"
+        },
+        "order_objectName_": {
+            "required": false,
+            "type": "string"
+        }
+    }
+}

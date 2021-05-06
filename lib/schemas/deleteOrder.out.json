@@ -1,9 +1,11 @@
 {
     "type": "object",
     "properties": {
-        "orderId": {
-            "required": true,
-            "type": "integer"
+        "objects": {
+            "type": "array",
+            "items": {
+                "type": "string"
+            }
         }
     }
 }

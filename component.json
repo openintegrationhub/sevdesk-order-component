@@ -28,16 +28,8 @@
         }
     },
     "triggers": {
-        "startFlow": {
-            "main": "./lib/triggers/startFlow.js",
-            "type": "polling",
-            "title": "Start Flow",
-            "fields": {}
-        }
-    },
-    "actions": {
         "getOrders": {
-            "main": "./lib/actions/getOrders.js",
+            "main": "./lib/triggers/getOrders.js",
             "title": "Retrieve orders",
             "description": "There are a multitude of parameter which can be used to filter. A few of them are attached but\r\n    for a complete list please check out <a href='https://5677.extern.sevdesk.dev/apiOverview/index.html#/doc-orders#filtering'>this</a> list",
             "fields": {
@@ -51,6 +43,23 @@
                 "out": "./lib/schemas/getOrders.out.json"
             }
         },
+        "getOrderPositions": {
+            "main": "./lib/triggers/getOrderPositions.js",
+            "title": "Retrieve order positions",
+            "description": "Retrieve all order positions depending on the filters defined in the query.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/getOrderPositions.in.json",
+                "out": "./lib/schemas/getOrderPositions.out.json"
+            }
+        }
+    },
+    "actions": {
         "createOrder": {
             "main": "./lib/actions/createOrder.js",
             "title": "Create a new order",
@@ -108,21 +117,6 @@
             "metadata": {
                 "in": "./lib/schemas/deleteOrder.in.json",
                 "out": "./lib/schemas/deleteOrder.out.json"
-            }
-        },
-        "getOrderPositions": {
-            "main": "./lib/actions/getOrderPositions.js",
-            "title": "Retrieve order positions",
-            "description": "Retrieve all order positions depending on the filters defined in the query.",
-            "fields": {
-                "verbose": {
-                    "viewClass": "CheckBoxView",
-                    "label": "Debug this step (log more data)"
-                }
-            },
-            "metadata": {
-                "in": "./lib/schemas/getOrderPositions.in.json",
-                "out": "./lib/schemas/getOrderPositions.out.json"
             }
         },
         "createOrderPos": {

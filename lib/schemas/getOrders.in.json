@@ -25,11 +25,11 @@
             "required": false,
             "type": "integer"
         },
-        "contact_id_": {
+        "contact[id]": {
             "required": false,
             "type": "integer"
         },
-        "contact_objectName_": {
+        "contact[objectName]": {
             "required": false,
             "type": "string"
         }

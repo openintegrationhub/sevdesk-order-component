@@ -28,8 +28,13 @@
         }
     },
     "triggers": {
+        "lookup": {
+            "main": "./lib/lookups/lookup.js",
+            "title": "Function to run a lookup",
+            "description": "Function to call an internal trigger or action"
+        },
         "getOrders": {
-            "main": "./lib/triggers/getOrders.js",
+            "main": "./lib/triggers/trigger.js",
             "title": "Retrieve orders",
             "description": "There are a multitude of parameter which can be used to filter. A few of them are attached but\r\n    for a complete list please check out <a href='https://5677.extern.sevdesk.dev/apiOverview/index.html#/doc-orders#filtering'>this</a> list",
             "fields": {
@@ -38,13 +43,17 @@
                     "label": "Debug this step (log more data)"
                 }
             },
+            "callParams": {
+                "pathName": "/Order",
+                "method": "get"
+            },
             "metadata": {
                 "in": "./lib/schemas/getOrders.in.json",
                 "out": "./lib/schemas/getOrders.out.json"
             }
         },
         "getOrderPositions": {
-            "main": "./lib/triggers/getOrderPositions.js",
+            "main": "./lib/triggers/trigger.js",
             "title": "Retrieve order positions",
             "description": "Retrieve all order positions depending on the filters defined in the query.",
             "fields": {
@@ -53,6 +62,10 @@
                     "label": "Debug this step (log more data)"
                 }
             },
+            "callParams": {
+                "pathName": "/OrderPos",
+                "method": "get"
+            },
             "metadata": {
                 "in": "./lib/schemas/getOrderPositions.in.json",
                 "out": "./lib/schemas/getOrderPositions.out.json"
@@ -60,23 +73,8 @@
         }
     },
     "actions": {
-        "createOrder": {
-            "main": "./lib/actions/createOrder.js",
-            "title": "Create a new order",
-            "description": "Creates an order to which positions can be added later.",
-            "fields": {
-                "verbose": {
-                    "viewClass": "CheckBoxView",
-                    "label": "Debug this step (log more data)"
-                }
-            },
-            "metadata": {
-                "in": "./lib/schemas/createOrder.in.json",
-                "out": "./lib/schemas/createOrder.out.json"
-            }
-        },
         "getOrderById": {
-            "main": "./lib/actions/getOrderById.js",
+            "main": "./lib/actions/action.js",
             "title": "Find order by ID",
             "description": "Returns a single order",
             "fields": {
@@ -85,13 +83,55 @@
                     "label": "Debug this step (log more data)"
                 }
             },
+            "callParams": {
+                "pathName": "/Order/{orderId}",
+                "method": "get"
+            },
             "metadata": {
                 "in": "./lib/schemas/getOrderById.in.json",
                 "out": "./lib/schemas/getOrderById.out.json"
             }
         },
+        "deleteOrder": {
+            "main": "./lib/actions/action.js",
+            "title": "Deletes an order",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "callParams": {
+                "pathName": "/Order/{orderId}/delete",
+                "method": "delete"
+            },
+            "metadata": {
+                "in": "./lib/schemas/deleteOrder.in.json",
+                "out": "./lib/schemas/deleteOrder.out.json"
+            }
+        },
+        "createOrder": {
+            "main": "./lib/actions/action.js",
+            "title": "Create a new order",
+            "description": "Creates an order to which positions can be added later.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "callParams": {
+                "pathName": "/Order",
+                "method": "post",
+                "requestContentType": "json"
+            },
+            "metadata": {
+                "in": "./lib/schemas/createOrder.in.json",
+                "out": "./lib/schemas/createOrder.out.json"
+            }
+        },
         "updateOrder": {
-            "main": "./lib/actions/updateOrder.js",
+            "main": "./lib/actions/action.js",
             "title": "Update an existing order",
             "description": "Update an order",
             "fields": {
@@ -100,27 +140,18 @@
                     "label": "Debug this step (log more data)"
                 }
             },
+            "callParams": {
+                "pathName": "/Order/{orderId}",
+                "method": "put",
+                "requestContentType": "json"
+            },
             "metadata": {
                 "in": "./lib/schemas/updateOrder.in.json",
                 "out": "./lib/schemas/updateOrder.out.json"
             }
         },
-        "deleteOrder": {
-            "main": "./lib/actions/deleteOrder.js",
-            "title": "Deletes an order",
-            "fields": {
-                "verbose": {
-                    "viewClass": "CheckBoxView",
-                    "label": "Debug this step (log more data)"
-                }
-            },
-            "metadata": {
-                "in": "./lib/schemas/deleteOrder.in.json",
-                "out": "./lib/schemas/deleteOrder.out.json"
-            }
-        },
         "createOrderPos": {
-            "main": "./lib/actions/createOrderPos.js",
+            "main": "./lib/actions/action.js",
             "title": "Create a new order position",
             "description": "Creates an order position for an order.",
             "fields": {
@@ -128,6 +159,11 @@
                     "viewClass": "CheckBoxView",
                     "label": "Debug this step (log more data)"
                 }
+            },
+            "callParams": {
+                "pathName": "/OrderPos",
+                "method": "post",
+                "requestContentType": "json"
             },
             "metadata": {
                 "in": "./lib/schemas/createOrderPos.in.json",

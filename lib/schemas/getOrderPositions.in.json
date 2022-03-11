@@ -1,11 +1,11 @@
 {
     "type": "object",
     "properties": {
-        "order_id_": {
+        "order[id]": {
             "required": false,
             "type": "integer"
         },
-        "order_objectName_": {
+        "order[objectName]": {
             "required": false,
             "type": "string"
         }

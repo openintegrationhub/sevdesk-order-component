@@ -37,12 +37,6 @@
             "main": "./lib/triggers/trigger.js",
             "title": "Retrieve orders",
             "description": "There are a multitude of parameter which can be used to filter. A few of them are attached but\r\n    for a complete list please check out <a href='https://5677.extern.sevdesk.dev/apiOverview/index.html#/doc-orders#filtering'>this</a> list",
-            "fields": {
-                "verbose": {
-                    "viewClass": "CheckBoxView",
-                    "label": "Debug this step (log more data)"
-                }
-            },
             "callParams": {
                 "pathName": "/Order",
                 "method": "get"
@@ -56,12 +50,6 @@
             "main": "./lib/triggers/trigger.js",
             "title": "Retrieve order positions",
             "description": "Retrieve all order positions depending on the filters defined in the query.",
-            "fields": {
-                "verbose": {
-                    "viewClass": "CheckBoxView",
-                    "label": "Debug this step (log more data)"
-                }
-            },
             "callParams": {
                 "pathName": "/OrderPos",
                 "method": "get"
@@ -77,12 +65,6 @@
             "main": "./lib/actions/action.js",
             "title": "Find order by ID",
             "description": "Returns a single order",
-            "fields": {
-                "verbose": {
-                    "viewClass": "CheckBoxView",
-                    "label": "Debug this step (log more data)"
-                }
-            },
             "callParams": {
                 "pathName": "/Order/{orderId}",
                 "method": "get"
@@ -95,12 +77,6 @@
         "deleteOrder": {
             "main": "./lib/actions/action.js",
             "title": "Deletes an order",
-            "fields": {
-                "verbose": {
-                    "viewClass": "CheckBoxView",
-                    "label": "Debug this step (log more data)"
-                }
-            },
             "callParams": {
                 "pathName": "/Order/{orderId}/delete",
                 "method": "delete"
@@ -110,36 +86,10 @@
                 "out": "./lib/schemas/deleteOrder.out.json"
             }
         },
-        "createOrder": {
-            "main": "./lib/actions/action.js",
-            "title": "Create a new order",
-            "description": "Creates an order to which positions can be added later.",
-            "fields": {
-                "verbose": {
-                    "viewClass": "CheckBoxView",
-                    "label": "Debug this step (log more data)"
-                }
-            },
-            "callParams": {
-                "pathName": "/Order",
-                "method": "post",
-                "requestContentType": "json"
-            },
-            "metadata": {
-                "in": "./lib/schemas/createOrder.in.json",
-                "out": "./lib/schemas/createOrder.out.json"
-            }
-        },
         "updateOrder": {
             "main": "./lib/actions/action.js",
             "title": "Update an existing order",
             "description": "Update an order",
-            "fields": {
-                "verbose": {
-                    "viewClass": "CheckBoxView",
-                    "label": "Debug this step (log more data)"
-                }
-            },
             "callParams": {
                 "pathName": "/Order/{orderId}",
                 "method": "put",
@@ -150,16 +100,24 @@
                 "out": "./lib/schemas/updateOrder.out.json"
             }
         },
+        "createOrder": {
+            "main": "./lib/actions/action.js",
+            "title": "Create a new order",
+            "description": "Creates an order to which positions can be added later.",
+            "callParams": {
+                "pathName": "/Order",
+                "method": "post",
+                "requestContentType": "json"
+            },
+            "metadata": {
+                "in": "./lib/schemas/createOrder.in.json",
+                "out": "./lib/schemas/createOrder.out.json"
+            }
+        },
         "createOrderPos": {
             "main": "./lib/actions/action.js",
             "title": "Create a new order position",
             "description": "Creates an order position for an order.",
-            "fields": {
-                "verbose": {
-                    "viewClass": "CheckBoxView",
-                    "label": "Debug this step (log more data)"
-                }
-            },
             "callParams": {
                 "pathName": "/OrderPos",
                 "method": "post",

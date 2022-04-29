@@ -74,16 +74,18 @@
                 "out": "./lib/schemas/getOrderById.out.json"
             }
         },
-        "deleteOrder": {
+        "createOrder": {
             "main": "./lib/actions/action.js",
-            "title": "Deletes an order",
+            "title": "Create a new order",
+            "description": "Creates an order to which positions can be added later.",
             "callParams": {
-                "pathName": "/Order/{orderId}/delete",
-                "method": "delete"
+                "pathName": "/Order",
+                "method": "post",
+                "requestContentType": "json"
             },
             "metadata": {
-                "in": "./lib/schemas/deleteOrder.in.json",
-                "out": "./lib/schemas/deleteOrder.out.json"
+                "in": "./lib/schemas/createOrder.in.json",
+                "out": "./lib/schemas/createOrder.out.json"
             }
         },
         "updateOrder": {
@@ -100,18 +102,16 @@
                 "out": "./lib/schemas/updateOrder.out.json"
             }
         },
-        "createOrder": {
+        "deleteOrder": {
             "main": "./lib/actions/action.js",
-            "title": "Create a new order",
-            "description": "Creates an order to which positions can be added later.",
+            "title": "Deletes an order",
             "callParams": {
-                "pathName": "/Order",
-                "method": "post",
-                "requestContentType": "json"
+                "pathName": "/Order/{orderId}/delete",
+                "method": "delete"
             },
             "metadata": {
-                "in": "./lib/schemas/createOrder.in.json",
-                "out": "./lib/schemas/createOrder.out.json"
+                "in": "./lib/schemas/deleteOrder.in.json",
+                "out": "./lib/schemas/deleteOrder.out.json"
             }
         },
         "createOrderPos": {
